@@ -92,6 +92,9 @@ namespace MirrorQuickstart.Controllers
             rootData.HasLocationSubscription =
                 subscriptions.Items.Any(x => x.Collection == "locations");
 
+            var location = Service.Locations.Get("latest").Fetch();
+            rootData.Location = string.Format("Latitude: {0}  Longitude: {1}  Time stamp: {2}", location.Latitude, location.Longitude, location.Timestamp);
+            rootData.LocationLink = string.Format("http://maps.google.com/maps?z=12&t=m&q=loc:{0}+{1}", location.Latitude, location.Longitude);
             return View(rootData);
         }
 
@@ -214,7 +217,7 @@ namespace MirrorQuickstart.Controllers
                     DisplayName = ".NET Quick Start",
                     Id = "DOTNET_QUICK_START",
                 },
-                Text = "Tell me what you had for lunch :)",
+                Text = "Insert Item with Action Text...",
                 Notification = new NotificationConfig() { Level = "DEFAULT" },
                 MenuItems = new List<MenuItem>() { { new MenuItem() { Action = "REPLY" } } },
             };

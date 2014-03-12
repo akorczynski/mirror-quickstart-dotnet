@@ -32,5 +32,9 @@ namespace MirrorQuickstart.Models
         public Boolean HasTimelineSubscription { get; set; }
 
         public Boolean HasLocationSubscription { get; set; }
+
+        public String Location { get; set; }
+
+        public String LocationLink { get; set; }
     }
 }
